@@ -23,19 +23,13 @@ class Colors:
     UNDERLINE = '\033[4m'
 
 
-API_KEY = ''    #API KEY FROM "OPENWEATHER" TO GET REAL TIME WEATHER REPORT!!
+API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'    #API KEY FROM "OPENWEATHER" TO GET REAL TIME WEATHER REPORT!!
 CITY_NAME = 'Ettimadai'                         #CITY NAME FOR WHICH THE WEATHER REPORT IS GENERATING!!
 
 contacts = {                                                          
-    "samith": "+91",      
-    "anish": "+91",
-    "sruhath": "+91",
-    "likith": "+91",
-    "manu": "+91",        #CONTACTS TO SEND MESSAGES THROUGH WHATSAPP!!
-    "ved": "+91",
-    "dj": "+91",
-    "aashrith": "+91",
-    "praneeth": "+91",
+            
+            "contact-name" : "123-456-7890",       #CONTACTS TO SEND MESSAGES THROUGH WHATSAPP!!
+
 }
 
 # Lists holidays by name and date.
@@ -59,8 +53,8 @@ holidays = [
     ("Baisakhi", date(2024, 4, 13)),
     ("Amma's Birthday", date(2024, 9, 27))
 ]
-DEFAULT_PATH = r"____"       #SYSTEM PATH WHERE SCREENSHOTS TAKEN ARE GOING TO BE STORED!!
-TASKS_FILE=r"_____"           #SYSTEM PATH WHERE TO-DO TASKS ARE GOING TO BE STORED!!
+DEFAULT_PATH = r"C:\Users\User\OneDrive\Desktop"       #SYSTEM PATH WHERE SCREENSHOTS TAKEN ARE GOING TO BE STORED!!
+TASKS_FILE=r"C:\Users\User\OneDrive\Desktop"           #SYSTEM PATH WHERE TO-DO TASKS ARE GOING TO BE STORED!!
 
 #Prints a separator line in the console for readability.
 def print_separator():
@@ -142,29 +136,29 @@ def get_time():
 
 #Sends a message to a contact on WhatsApp using pyautogui to automate typing.
 def send_whatsapp_message():
-    print("Chat Buddy 🤖:- Who would you like to send a message to? (Please enter the recipient's name):")
+    print("Bot:- Who would you like to send a message to? (Please enter the recipient's name):")
     recipient_name = input("You:- ").strip()
     phone_number = contacts.get(recipient_name)
     
     if not phone_number:
-        print("Chat Buddy 🤖:- I couldn't find that contact. Please check the name and try again.")
+        print("Bot:- I couldn't find that contact. Please check the name and try again.")
         return
 
-    print("Chat Buddy 🤖:- What would you like to send?")
+    print("Bot:- What would you like to send?")
     message = input("You:- ").strip()
     
     # Open WhatsApp Web for the contact
     webbrowser.open(f"https://wa.me/{phone_number}")
-    time.sleep(15)  # Increased wait time to ensure WhatsApp is loaded
+    time.sleep(8)  # Increased wait time to ensure WhatsApp is loaded
 
     # Click on the message input box (adjust coordinates based on your screen resolution)
-    pyautogui.click(x=728, y=1012)  # Change coordinates to where the message box is
+    pyautogui.click(x=1092, y=1049)  # Change coordinates to where the message box is
     time.sleep(1)  # Short pause to ensure the message box is focused
 
     # Type the message and send it
     pyautogui.typewrite(message)
     pyautogui.press('enter')  
-    print(f"Chat Buddy 🤖:- Message to {recipient_name} has been sent.")
+    print(f"Bot:- Message to {recipient_name} has been sent.")
 
 #Opens the Windows Camera app and takes a photo using pyautogui.
 def open_camera_and_take_photo():
@@ -251,7 +245,7 @@ def get_disk_usage():
 
 #Load tasks from TASK_FILE.
 class to_do:
-    def __init__(self):
+    def _init_(self):
         self.tasks = []
         self.load_tasks()
 
@@ -290,7 +284,6 @@ class to_do:
             return Colors.OKGREEN + f"Task {task_number} marked as Complete." + Colors.ENDC
         else:
             return Colors.FAIL + "Invalid task number." + Colors.ENDC
-
 
 todo_instance=to_do()
 
@@ -357,8 +350,8 @@ def whatsapp_videocall():
         
         # Open the URL in the default web browser
         webbrowser.open(url)
-        time.sleep(15)
-        pyautogui.click(1763, 85)
+        time.sleep(8)
+        pyautogui.click(1775, 86)
     else:
         print("Contact not found in the directory.")
 
@@ -375,8 +368,8 @@ def whatsapp_voicecall():
         
         # Open the URL in the default web browser
         webbrowser.open(url)
-        time.sleep(15)
-        pyautogui.click(1817, 80)
+        time.sleep(8)
+        pyautogui.click(1823, 81)
     else:
         print("Contact not found in the directory.")
 
@@ -449,7 +442,7 @@ def handle_command(user_query):
     elif "open file explorer" in user_query:
         return open_file_explorer()
     elif "show my location" in user_query:
-        return show_location(10.902077865646634, 76.899674694908)  
+        return show_location(0.00000000000,0.000000000) #replace with logitude and latitude 
     elif "locate" in user_query:
         place = user_query.replace("locate", "").strip()
         return locate_place(place)
